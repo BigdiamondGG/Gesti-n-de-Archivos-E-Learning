@@ -28,8 +28,8 @@
 					<div class="p-4 rounded  border">
 						<div class="text-center">
 							<img src="<?php echo BASE_URL; ?>assets/images/icons/forgot-2.png" width="120" alt="" />
+							<h4 class="mt-5 font-weight-bold text-secondary">¿Olvidaste Contraseña?</h4>
 						</div>
-						<h4 class="mt-5 font-weight-bold text-secondary">Olvidaste Contraseña?</h4>
 						<p class="text-white">Ingrese su Correo electrónico registrado para<br>restablecer la contraseña</p>
 						<div class="my-4">
 							<label class="form-label">Correo Electrónico</label>

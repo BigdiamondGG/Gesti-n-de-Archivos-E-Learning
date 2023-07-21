@@ -4,11 +4,9 @@
     <div class="card-body">
         <div class="d-flex align-items-center">
             <div></div>
-            <div class="dropdown ms-auto">
-                <a class="dropdown-toggle dropdown-toggle-nocaret" href="#" data-bs-toggle="dropdown"><i class='bx bx-dots-horizontal-rounded font-22 text-option'></i>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="<?php echo BASE_URL . 'usuarios/inactivos'; ?>"><i class="fas fa-trash text-danger"></i> Inactivos</a>
+            <div class=" ms-auto">
+                <ul class="dropdown-toggle dropdown-toggle-nocaret">
+                    <li><a class="dropdown-item bg-info text-white" href="<?php echo BASE_URL . 'usuarios/inactivos'; ?>"><i class="bx bx-user-x text-danger fa-lg"></i> Usuarios Inactivos</a>
                     </li>
                 </ul>
             </div>

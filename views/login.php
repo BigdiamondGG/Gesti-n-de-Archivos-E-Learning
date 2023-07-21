@@ -37,7 +37,7 @@
                             <div class="card-body card-login">
                                 <div class="border p-4 rounded">
                                     <div class="text-center">
-                                        <h3 class="text-light bg-primary-rgb">Gestión de Archivos <br> E-Learning</h3>
+                                        <h3 class="text-light bg-primary-rgb">Gestión de Archivos<br>E-Learning</h3>
                                     </div>
                                     <div class="login-separater text-center mb-4"> <span class="bg-info">Iniciar Sesión</span>
                                         <hr />
