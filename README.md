@@ -5,7 +5,8 @@
 ![unidad](https://github.com/BigdiamondGG/Gesti-n-de-Archivos-E-Learning/blob/main/assets/images/Principal-Img.png)
 # Requerimientos
 ->Php Version 8
-->
+<br>
+->MySQL
 ###### 1.- Descargar [Composer](https://getcomposer.org/download/ "Composer")
 https://getcomposer.org/download/
 ###### 2.- Abrir **cmd** dentro del proyecto - Ejecutar el comando
