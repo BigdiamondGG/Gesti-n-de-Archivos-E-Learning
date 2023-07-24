@@ -33,8 +33,8 @@ class Alls extends Controller
     }
     public function pagePublic($page)
     {
-        $data['title'] = 'Carpetas';
-        $data['script'] = 'index.js';
+        $data['title'] = 'Carpetas Publicas';
+        $data['script'] = 'indexPublic.js';
         $data['active'] = 'alls';
 
         $pagina = (empty($page)) ? 1 : $page ;

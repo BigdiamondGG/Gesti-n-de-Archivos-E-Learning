@@ -37,9 +37,8 @@
                                         <div class="font-30 text-primary"><i class='bx bxs-folder text-info'></i>
                                         </div>
                                         <div class="user-groups ms-auto">
-
                                         </div>
-                                        <div class="user-plus" onclick="accionCarpeta(<?php echo $carpeta['id']; ?>)">+</div>
+                                        <div class="user-plus" onclick="accionCarpetaPublic(<?php echo $carpeta['id']; ?>)">+</div>
                                     </div>
                                     <h6 class="mb-0 text-info"><a class="text-info" href="<?php echo BASE_URL . 'carpetas/details/' . $carpeta['id']; ?>"><?php echo $carpeta['nombre']; ?></a></h6>
                                     <small><?php echo $archivo['total']; ?> <?php echo ($archivo['total'] > 1) ? 'archivos' : 'archivo'; ?></small>

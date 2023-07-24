@@ -29,7 +29,7 @@ class Shared extends Controller
                 $data[$i]['accion'] = '';
                 $data[$i]['status'] = '<a href="#" onclick=leerArchivo('.$data[$i]['id'].')><span class="badge bg-info">No leido</span></a>';
             } else {
-                $data[$i]['accion'] = '<a class="btn btn-outline-danger btn-sm" href="' . BASE_URL . 'assets/archivos/' . $carpeta['nombre'] . '/' . $data[$i]['nombre'] . '" target="_blank">
+                $data[$i]['accion'] = '<a class="btn btn-info btn-sm text-white" href="' . BASE_URL . 'assets/archivos/' . $carpeta['nombre'] . '/' . $data[$i]['nombre'] . '" target="_blank">
                 <i class="fas fa-download"></i>
                 </a>';
                 $data[$i]['status'] = '<span class="badge bg-success">Leido</span>';

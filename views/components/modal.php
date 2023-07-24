@@ -67,8 +67,8 @@
         </div>
     </div>
 </div>
-<!-- Modal subir archivo Into Folder-->
-<div id="modalAccionIntoFolder" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
+<!-- Modal subir archivo Public-->
+<div id="modalAccionPublic" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -76,14 +76,14 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="fm-menu" id="containerAccion">
+                <div class="fm-menu" id="containerAccionPublic">
                     <div class="list-group list-group-flush">
-                        <a href="javascript:;" id="btnNuevoArchivo" class="list-group-item py-3"><i class="fa-solid fa-cloud-arrow-up me-2"></i><span>Subir archivo</span></a>
+                        <a href="javascript:;" id="btnNuevoArchivoPublic" class="list-group-item py-3"><i class="fa-solid fa-cloud-arrow-up me-2"></i><span>Subir archivo</span></a>
                     </div>
                 </div>
-                <form id="frmArchivo">
-                    <input type="hidden" id="id_carpeta" name="id_carpeta">
-                    <input type="file" name="archivo" id="archivo" class="d-none">
+                <form id="frmArchivoPublic">
+                    <input type="hidden" id="id_carpetaPublic" name="id_carpetaPublic">
+                    <input type="file" name="archivoPublic" id="archivoPublic" class="d-none">
                 </form>
             </div>
         </div>

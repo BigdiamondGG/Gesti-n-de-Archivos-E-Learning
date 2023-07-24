@@ -195,7 +195,7 @@ class Usuarios extends Controller
                 $data[$i]['rol'] = '<span class="badge bg-info">INSTRUCTOR</span>';
             }
             $data[$i]['acciones'] = '<div>
-            <button class="btn btn-warning" type="button" onclick="restaurarUsuario(' . $data[$i]['id'] . ')"><i class="fas fa-trash-restore"></i></button>
+            <button class="btn btn-warning" type="button" onclick="restaurarUsuario(' . $data[$i]['id'] . ')"><i class="fas fa-trash-restore text-white"></i></button>
             </div>';
         }
         echo json_encode($data, JSON_UNESCAPED_UNICODE);

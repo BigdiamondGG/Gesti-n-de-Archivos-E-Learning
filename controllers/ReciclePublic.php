@@ -15,15 +15,15 @@ class ReciclePublic extends Controller
     public function index()
     {
         $data['title'] = 'Archivos eliminados';
-        $data['script'] = 'index.js';
+        $data['script'] = 'indexpublic.js';
         $data['active'] = 'deletePublic';
-        $this->views->getView('archivos', 'recicle-public', $data);
+        $this->views->getView('archivos', 'reciclepublic', $data);
     }
 
     public function listar()
-    {
-
-        $data = $this->model->getRecicleR();
+    { 
+        $idUser=0;
+        $data = $this->model->getRecicle($idUser);
         for ($i=0; $i < count($data); $i++) { 
             $data[$i]['accion'] = '<div>
             <button class="btn btn-warning text-white" type="button" onclick="restoreArchivo(' . $data[$i]['id'] . ')"><i class="fas fa-trash-restore"></i> Restaurar</button>

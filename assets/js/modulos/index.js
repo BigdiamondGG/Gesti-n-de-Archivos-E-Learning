@@ -1,15 +1,9 @@
 const btnNuevo = document.querySelector('#btnNuevo');
-const btnNuevoFolder = document.querySelector('#btnNuevoFolder');
 const btnCrearCarpeta = document.querySelector('#btnCrearCarpeta');
-const btnCrearCarpetaPublic = document.querySelector('#btnCrearCarpetaPublic');
 const frm = document.querySelector('#frmNuevaCarpeta');
-const frmPublic = document.querySelector('#frmNuevaCarpetaPublic');
 const nombreCarpeta = document.querySelector('#nombreCarpeta');
-const nombreCarpetaPublic = document.querySelector('#nombreCarpetaPublic');
 const errorNombreCarpeta = document.querySelector('#errorNombreCarpeta');
-const errorNombreCarpetaPublic = document.querySelector('#errorNombreCarpetaPublic');
 const id_carpeta = document.querySelector('#id_carpeta');
-const id_carpetaPublic = document.querySelector('#id_carpetaPublic');
 const archivo = document.querySelector('#archivo');
 const frmArchivo = document.querySelector('#frmArchivo');
 const btnNuevoArchivo = document.querySelector('#btnNuevoArchivo');
@@ -20,9 +14,7 @@ const btnAgregarUsuarios = document.querySelector('#btnAgregarUsuarios');
 const usuarios = document.querySelector('#usuarios');
 
 const carpeta = new bootstrap.Modal('#modalCarpeta');
-const carpetaPublic = new bootstrap.Modal('#modalCarpetaPublic');
 const modalAccion = new bootstrap.Modal('#modalAccion');
-const modalAccionIntoFolder = new bootstrap.Modal('#modalAccionIntoFolder');
 const modalCompartir = new bootstrap.Modal('#modalCompartir');
 
 const tblUserAcceso = document.querySelector('#tblUserAcceso tbody');
@@ -33,7 +25,6 @@ const error = document.querySelector('#error');
 //Init Document
 document.addEventListener('DOMContentLoaded', function () {
     //Modal Para crear carpeta según Usuario
-    console.log(btnNuevo);
     btnNuevo.addEventListener('click', function () {
         carpeta.show();
         nombreCarpeta.value = ''; })
@@ -69,38 +60,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     });
- //######### crear nueva carpeta Publica
- btnCrearCarpetaPublic.addEventListener('click', function () {
-    errorNombreCarpetaPublic.textContent = '';
-    if (nombreCarpetaPublic.value == '') {
-        alertaPersonalizada('warning', 'INGRESA EL NOMBRE');
-        errorNombreCarpetaPublic.textContent = 'INGRESA EL NOMBRE';
-        nombreCarpetaPublic.focus();
-    } else {
-        const url = base_url + 'carpetas/createPublicFolder';
-        //crear formData
-        const data = new FormData(frm);
-        //hacer una instancia del objeto XMLHttpRequest 
-        const http = new XMLHttpRequest();
-        //Abrir una Conexion - POST - GET
-        http.open('POST', url, true);
-        //Enviar Datos
-        http.send(data);
-        //verificar estados
-        http.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                const res = JSON.parse(this.responseText);
-                alertaPersonalizada(res.type, res.msg);
-                if (res.type == 'success') {
-                    carpetaPublic.hide();
-                    setTimeout(() => {
-                        window.location.reload();
-                    }, 1500);
-                }
-            }
-        }
-    }
-});
     //########## abrir administrador de archivos
     btnNuevoArchivo.addEventListener('click', function () {
         archivo.click();

@@ -41,6 +41,39 @@ class Archivos extends Controller
             die();
         }
     }
+    //Subir Archivo  A carpetas publicas
+    public function uploadPublic()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $id_carpeta = strClean($_POST['id_carpetaPublic']);
+            $archivo = $_FILES['archivoPublic'];
+            if (is_numeric($id_carpeta) && !empty($archivo['name'])) {
+                if (!file_exists('assets/archivos')) {
+                    mkdir('assets/archivos');
+                }
+                $name = $archivo['name'];
+                $consulta = $this->model->getCarpeta($id_carpeta);
+                $carpeta = 'assets/archivos/' . $consulta['nombre'];
+                $destino = $carpeta . '/' . $name;
+                if (!file_exists($carpeta)) {
+                    mkdir($carpeta);
+                }
+                $type = $archivo['type'];
+                $fecha = date('Y-m-d H:i:s');
+                $data = $this->model->agregarArchivo($name, $type, $fecha, $id_carpeta);
+                if ($data > 0) {
+                    move_uploaded_file($archivo['tmp_name'], $destino);
+                    $res = array('msg' => 'ARCHIVO SUBIDO', 'type' => 'success');
+                } else {
+                    $res = array('msg' => 'ERROR AL SUBIR EL ARCHIVO: ' . $archivo['name'], 'type' => 'error');
+                }
+            } else {
+                $res = array('msg' => 'ERROR DESCONOCIDO', 'type' => 'error');
+            }
+            echo json_encode($res);
+            die();
+        }
+    }
 
     //buscar usuario
     public function buscarUsuario()

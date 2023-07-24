@@ -5,11 +5,7 @@
         <div class="d-flex align-items-center">
             <div></div>
             <div class=" ms-auto">
-                <ul class="dropdown-toggle dropdown-toggle-nocaret">
-                    <li><a class="dropdown-item bg-info text-white" href="<?php echo BASE_URL . 'usuarios/inactivos'; ?>"><i class="bx bx-user-x text-danger fa-lg"></i> Usuarios Inactivos</a>
-                    </li>
-                </ul>
-            </div>
+            <a class="btn btn-info text-white" href="<?php echo BASE_URL . 'usuarios/inactivos'; ?>"><i class="bx bx-user-x text-danger fa-lg"></i> Usuarios Inactivos</a>                 </div>
         </div>
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">

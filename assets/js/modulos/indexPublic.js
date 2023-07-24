@@ -2,21 +2,18 @@ const btnCrearCarpetaPublic = document.querySelector('#btnCrearCarpetaPublic');
 const frmPublic = document.querySelector('#frmNuevaCarpetaPublic');
 const nombreCarpetaPublic = document.querySelector('#nombreCarpetaPublic');
 const errorNombreCarpetaPublic = document.querySelector('#errorNombreCarpetaPublic');
-const id_carpeta = document.querySelector('#id_carpeta');
 const id_carpetaPublic = document.querySelector('#id_carpetaPublic');
-const archivo = document.querySelector('#archivo');
-const frmArchivo = document.querySelector('#frmArchivo');
-const btnNuevoArchivo = document.querySelector('#btnNuevoArchivo');
-const containerAccion = document.querySelector('#containerAccion');
+const archivoPublic = document.querySelector('#archivoPublic');
+const frmArchivoPublic = document.querySelector('#frmArchivoPublic');
+const btnNuevoArchivoPublic = document.querySelector('#btnNuevoArchivoPublic');
+const containerAccionPublic = document.querySelector('#containerAccionPublic');
 const btnCompartir = document.querySelector('#btnCompartir');
 const frmCompartir = document.querySelector('#frmCompartir');
 const btnAgregarUsuarios = document.querySelector('#btnAgregarUsuarios');
 const usuarios = document.querySelector('#usuarios');
 
-const carpeta = new bootstrap.Modal('#modalCarpeta');
 const carpetaPublic = new bootstrap.Modal('#modalCarpetaPublic');
-const modalAccion = new bootstrap.Modal('#modalAccion');
-const modalAccionIntoFolder = new bootstrap.Modal('#modalAccionIntoFolder');
+const modalAccionPublic = new bootstrap.Modal('#modalAccionPublic');
 const modalCompartir = new bootstrap.Modal('#modalCompartir');
 
 const tblUserAcceso = document.querySelector('#tblUserAcceso tbody');
@@ -41,13 +38,13 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
         const url = base_url + 'carpetas/createPublicFolder';
         //crear formData
-        const data = new FormData(frm);
+        const data = new FormData(frmPublic);
         //hacer una instancia del objeto XMLHttpRequest 
         const http = new XMLHttpRequest();
         //Abrir una Conexion - POST - GET
         http.open('POST', url, true);
         //Enviar Datos
-        http.send(data);
+        http.send(data); 
         //verificar estados
         http.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
@@ -63,26 +60,26 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 });
-    //########## abrir administrador de archivos
-    btnNuevoArchivo.addEventListener('click', function () {
-        archivo.click();
+    //abrir administrador de archivos
+    btnNuevoArchivoPublic.addEventListener('click', function () {
+        archivoPublic.click();
     })
 
-    //########## change del archivo
-    archivo.addEventListener('change', function () {
+    // change del archivo
+    archivoPublic.addEventListener('change', function () {
 
         const http = new XMLHttpRequest();
-        const url = base_url + 'archivos/upload';
+        const url = base_url + 'archivos/uploadPublic';
         http.open("POST", url, true);
         // upload progress event
         http.upload.addEventListener("progress", function (e) {
             let porcentaje = (e.loaded / e.total) * 100;
             const total = porcentaje.toFixed(0);
-            containerAccion.innerHTML = `<div class="progress">
+            containerAccionPublic.innerHTML = `<div class="progress">
                 <div class="progress-bar" role="progressbar" style="width: ${total}%;" aria-valuenow="${total}" aria-valuemin="0" aria-valuemax="100">${total}%</div>
             </div>`;
         });
-        http.send(new FormData(frmArchivo));
+        http.send(new FormData(frmArchivoPublic));
         http.addEventListener("load", function (e) {
             setTimeout(() => {
                 window.location.reload();
@@ -94,69 +91,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 alertaPersonalizada(res.type, res.msg);
             }
         };
-    })
-
-    //########## compartir archivo
-    btnCompartir.addEventListener('click', function () {
-        modalAccion.hide();
-        usuariosAcceso(id_carpeta.value);
-        modalCompartir.show();
-    })
-
-    $(".multiple-select").select2({
-        ajax: {
-            url: base_url + 'archivos/buscarUsuario',
-            dataType: 'json',
-            delay: 250,
-            data: function (params) {
-                return {
-                    q: params.term
-                };
-            },
-            processResults: function (data) {
-                return {
-                    results: data
-                };
-            },
-            cache: true
-        },
-        minimumInputLength: 2,
-        dropdownParent: $('#modalCompartir'),
-        theme: 'bootstrap-5',
-        width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
-        placeholder: 'Buscar usuario',
-    });
-
-    //########## agregar usuarios
-    btnAgregarUsuarios.addEventListener('click', function () {
-        if (usuarios.value == '') {
-            alertaPersonalizada('warning', 'SELECCIONA UN USUARIO');
-        } else {
-            const url = base_url + 'archivos/add_user';
-            //crear formData
-            const data = new FormData(frmCompartir);
-            data.append('id_carpeta', id_carpeta.value);
-            //hacer una instancia del objeto XMLHttpRequest 
-            const http = new XMLHttpRequest();
-            //Abrir una Conexion - POST - GET
-            http.open('POST', url, true);
-            //Enviar Datos
-            http.send(data);
-            //verificar estados
-            http.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    console.log(this.responseText);
-                    const res = JSON.parse(this.responseText);
-                    alertaPersonalizada(res.type, res.msg);
-                    if (res.type == 'success') {
-                        modalCompartir.hide();
-                        setTimeout(() => {
-                            window.location.reload();
-                        }, 2000);
-                    }
-                }
-            }
-        }
     })
 
     //autocomplete clientes
@@ -211,14 +145,9 @@ document.addEventListener('DOMContentLoaded', function () {
 }) //End Document
 //-------------------------------------------------------------------
 //Muestra Modal para agregar o compartir carpeta
-function accionCarpeta(idCarpeta) {
-    id_carpeta.value = idCarpeta;
-    modalAccion.show();
-}
-//Muestra Modal para agregar o compartir archivo
-function accionIntoFolder(idCarpeta) {
-    id_carpeta.value = idCarpeta;
-    modalAccionIntoFolder.show();
+function accionCarpetaPublic(idCarpeta) {
+    id_carpetaPublic.value = idCarpeta;
+    modalAccionPublic.show();
 }
 function usuariosAcceso(idCarpeta) {
     const url = base_url + 'archivos/user_access/' + idCarpeta;
