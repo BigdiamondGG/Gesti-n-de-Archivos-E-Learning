@@ -3,13 +3,12 @@
             <div class="card-body">
                 <h5 class="card-title text-center"><?php echo $data['carpeta']['nombre']; ?></h5>
                 <!-- New -->
-                    <a href="javascript:;" id="btnNuevoArchivoPublic" class="list-group-item py-3"><i class="fa-solid fa-cloud-arrow-up me-2"></i><span>Subir archivo</span></a>
-
+                <button id="btnNuevoArchivoPublic" onclick="accionCarpetaPublic(22)">Tets</button>
                 <!-- End New -->
                 <hr>
                 <input type="hidden" id="id_carpeta" value="<?php echo $data['carpeta']['id']; ?>">
                 <div class="table-responsive">
-                    <table class="table table-hover nowrap" style="width: 100%;" id="tblDetalle">
+                    <table class="table table-hover nowrap" style="width: 100%;" id="tblDetallePublic">
                         <thead>
                             <tr>
                                 <th>Id</th>

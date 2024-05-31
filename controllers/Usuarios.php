@@ -43,6 +43,28 @@ class Usuarios extends Controller
         echo json_encode($data, JSON_UNESCAPED_UNICODE);
         die();
     }
+    //logs de acceso
+    public function student()
+    {
+        if ($_SESSION['rol'] == 2) {
+            header('Location: ' . BASE_URL . 'admin/permisos');
+            exit;
+        }
+        $data['title'] = 'Participantes Inscritos';
+        $data['script'] = 'usuarios.js';
+        $this->views->getView('usuarios', 'student', $data);
+    }
+
+    public function listarStudents()
+    {
+        if ($_SESSION['rol'] == 2) {
+            header('Location: ' . BASE_URL . 'admin/permisos');
+            exit;
+        }
+        $data = $this->model->getStudent();
+        echo json_encode($data, JSON_UNESCAPED_UNICODE);
+        die();
+    }
     //metodo para registrar y modificar
     public function registrar()
     {

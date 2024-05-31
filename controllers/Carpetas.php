@@ -60,15 +60,25 @@ class Carpetas extends Controller
             die();
         }
     }
+    //Detalles al hacer click en carpeta
     public function details($id_carpeta)
     {
         $id_carpeta = strClean($id_carpeta);
-        $data['title'] = 'Iniciar Sesion';
+        $data['title'] = 'Archivos';
         $data['script'] = 'detalle.js';
         $data['carpeta'] = $this->model->getCarpeta($id_carpeta);
         $this->views->getView('carpetas', 'detalle', $data);
     }
-
+    //Detalles al hacer click en carpeta publica
+    public function detailsp($id_carpeta)
+    {
+        $id_carpeta = strClean($id_carpeta);
+        $data['title'] = 'Archivos';
+        $data['script'] = 'detallepublic.js';
+        $data['carpeta'] = $this->model->getCarpeta($id_carpeta);
+        $this->views->getView('carpetas', 'detallepublic', $data);
+    }
+    //listar archivos segun carpeta
     public function listarDetalle($id_carpeta)
     {
         $data = $this->model->getArchivos($id_carpeta);
@@ -88,4 +98,23 @@ class Carpetas extends Controller
         echo json_encode($data, JSON_UNESCAPED_UNICODE);
         die();
     }
+     //listar archivos segun carpeta Publica
+     public function listarDetallePublic($id_carpeta)
+     {
+         $data = $this->model->getArchivos($id_carpeta);
+         // for ($i=0; $i < count($data); $i++) { 
+            // $data[$i]['accion'] = '<a class="btn btn-outline-danger btn-sm" href="#" onclick="deleteArchivo('.$data[$i]['id'].')"><i class="fas fa-trash"></i></a>';
+         // }
+         for ($i = 0; $i < count($data); $i++) {
+             $carpeta = $this->model->getCarpeta($data[$i]['id_carpeta']);
+             $data[$i]['accion'] = '<div>
+             <a class="btn btn-info text-white btn-sm" href="' . BASE_URL . 'assets/archivos/' . $carpeta['nombre'] . '/' . $data[$i]['nombre'] . '" target="_blank"  download="'. $data[$i]['nombre'].'">
+             <i class="fas fa-download"></i>
+             </a>
+             <button class="btn btn-danger btn-sm" type="button" onclick="deleteArchivoPublic(' . $data[$i]['id'] . ')"><i class="fas fa-trash"></i></button>
+             </div>';
+         }
+         echo json_encode($data, JSON_UNESCAPED_UNICODE);
+         die();
+     }
 }

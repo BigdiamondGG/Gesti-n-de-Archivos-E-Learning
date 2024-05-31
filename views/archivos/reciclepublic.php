@@ -7,7 +7,7 @@
             <ol class="breadcrumb mb-0 p-0">
                 <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt text-info"></i></a>
                 </li>
-                <li class="breadcrumb-item active" aria-current="page">Archivos Públicos</li>
+                <li class="breadcrumb-item active" aria-current="page">Archivos E-Learning</li>
             </ol>
         </nav>
     </div>
@@ -24,7 +24,7 @@
                 <!--end row-->
                 <div class="row mt-3">
                     <div class="table-responsive">
-                        <table class="table table-hover nowrap" style="width: 100%;" id="tblRecicle">
+                        <table class="table table-hover nowrap" style="width: 100%;" id="tblRPublic">
                             <thead>
                                 <tr>
                                     <th>#</th>

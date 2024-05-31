@@ -20,13 +20,15 @@ class ReciclePublic extends Controller
         $this->views->getView('archivos', 'reciclepublic', $data);
     }
 
-    public function listar()
+    public function listarPublic( $id_user)
     { 
-        $idUser=0;
-        $data = $this->model->getRecicle($idUser);
+        $id_user=0;
+        $data = $this->model->getRecicle($this->id_usuario);
+        
+
         for ($i=0; $i < count($data); $i++) { 
             $data[$i]['accion'] = '<div>
-            <button class="btn btn-warning text-white" type="button" onclick="restoreArchivo(' . $data[$i]['id'] . ')"><i class="fas fa-trash-restore"></i> Restaurar</button>
+            <button class="btn btn-warning text-white btn-sm" type="button" onclick="restoreArchivo(' . $data[$i]['id'] . ')"><i class="fas fa-trash-restore"></i> Restaurar</button>
             </div>';       
              }
         echo json_encode($data, JSON_UNESCAPED_UNICODE);

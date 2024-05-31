@@ -21,7 +21,7 @@
     <div class="col-12 col-lg-9">
         <div class="card">
             <div class="card-body">
-                <?php include_once 'views/components/search.php'; ?>
+                <?php include_once 'views/components/searchPublic.php'; ?>
                 <hr>
                 <!--end row-->
                 <h5>Carpetas Públicas</h5>
@@ -40,7 +40,7 @@
                                         </div>
                                         <div class="user-plus" onclick="accionCarpetaPublic(<?php echo $carpeta['id']; ?>)">+</div>
                                     </div>
-                                    <h6 class="mb-0 text-info"><a class="text-info" href="<?php echo BASE_URL . 'carpetas/details/' . $carpeta['id']; ?>"><?php echo $carpeta['nombre']; ?></a></h6>
+                                    <h6 class="mb-0 text-info"><a class="text-info" href="<?php echo BASE_URL . 'carpetas/detailsp/' . $carpeta['id']; ?>"><?php echo $carpeta['nombre']; ?></a></h6>
                                     <small><?php echo $archivo['total']; ?> <?php echo ($archivo['total'] > 1) ? 'archivos' : 'archivo'; ?></small>
                                 </div>
                             </div>

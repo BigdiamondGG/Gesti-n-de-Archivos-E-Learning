@@ -23,6 +23,7 @@ class Recicle extends Controller
     public function listar()
     {
         $data = $this->model->getRecicle($this->id_usuario);
+        
         for ($i=0; $i < count($data); $i++) { 
             $data[$i]['accion'] = '<div>
             <button class="btn btn-warning text-white btn-sm" type="button" onclick="restoreArchivo(' . $data[$i]['id'] . ')"><i class="fas fa-trash-restore"></i> Restaurar</button>

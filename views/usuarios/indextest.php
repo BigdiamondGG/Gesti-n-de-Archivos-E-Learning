@@ -21,7 +21,7 @@
                 <table class="table table-bordered table-striped table-hover nowrap" id="tblUsuarios" style="width: 100%;">
                     <thead>
                         <tr>
-                        <th>Nombres</th>
+                            <th>Nombres</th>
                             <th>Correo</th>
                             <th>Teléfono</th>
                             <th>Cargo</th>

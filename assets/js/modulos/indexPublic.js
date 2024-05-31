@@ -6,11 +6,13 @@ const id_carpetaPublic = document.querySelector('#id_carpetaPublic');
 const archivoPublic = document.querySelector('#archivoPublic');
 const frmArchivoPublic = document.querySelector('#frmArchivoPublic');
 const btnNuevoArchivoPublic = document.querySelector('#btnNuevoArchivoPublic');
+const btnNuevoArchivoIFP = document.querySelector('#btnNuevoArchivoIFP');
 const containerAccionPublic = document.querySelector('#containerAccionPublic');
 const btnCompartir = document.querySelector('#btnCompartir');
 const frmCompartir = document.querySelector('#frmCompartir');
 const btnAgregarUsuarios = document.querySelector('#btnAgregarUsuarios');
 const usuarios = document.querySelector('#usuarios');
+const archivoIF = document.querySelector('.archivoIF')
 
 const carpetaPublic = new bootstrap.Modal('#modalCarpetaPublic');
 const modalAccionPublic = new bootstrap.Modal('#modalAccionPublic');
@@ -64,7 +66,6 @@ document.addEventListener('DOMContentLoaded', function () {
     btnNuevoArchivoPublic.addEventListener('click', function () {
         archivoPublic.click();
     })
-
     // change del archivo
     archivoPublic.addEventListener('change', function () {
 
@@ -93,11 +94,11 @@ document.addEventListener('DOMContentLoaded', function () {
         };
     })
 
-    //autocomplete clientes
-    $("#search").autocomplete({
+    //autocomplete Archivo
+    $("#searchPublic").autocomplete({
         source: function (request, response) {
             $.ajax({
-                url: base_url + 'archivos/buscar',
+                url: base_url + 'archivos/buscarPublic',
                 dataType: "json",
                 data: {
                     term: request.term
@@ -121,9 +122,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    $('#tblReciclePublic').DataTable({
+    $('#tblRPublic').DataTable({
         ajax: {
-            url: base_url + 'reciclepublic/listar',
+            url: base_url + 'reciclePublic/listarPublic',
             dataSrc: ''
         },
         columns: [
@@ -141,7 +142,6 @@ document.addEventListener('DOMContentLoaded', function () {
         responsive: true,
         order: [[0, 'desc']],
     });
-
 }) //End Document
 //-------------------------------------------------------------------
 //Muestra Modal para agregar o compartir carpeta
@@ -149,6 +149,8 @@ function accionCarpetaPublic(idCarpeta) {
     id_carpetaPublic.value = idCarpeta;
     modalAccionPublic.show();
 }
+// archivoIF.addEventListener('click', accionCarpetaPublic);
+
 function usuariosAcceso(idCarpeta) {
     const url = base_url + 'archivos/user_access/' + idCarpeta;
     //hacer una instancia del objeto XMLHttpRequest 

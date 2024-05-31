@@ -81,13 +81,11 @@
                         <div class="menu-title">Administración</div>
                     </a>
                     <ul>
-                        <li> <a href="<?php echo BASE_URL . 'usuarios'; ?>"><i class="bx bx-right-arrow-alt"></i>Usuarios</a>
-                        </li>
+                        <li> <a href="<?php echo BASE_URL . 'usuarios'; ?>"><i class="bx bx-right-arrow-alt"></i>Usuarios</a></li>
+                        <li> <a href="<?php echo BASE_URL . 'usuarios/student'; ?>"><i class="bx bx-right-arrow-alt"></i>Participantes</a></li>
                         <!-- <li> <a href="<?php echo BASE_URL . 'admin/datos'; ?>"><i class="bx bx-right-arrow-alt"></i>Configuracion</a>
                         </li> -->
-                        <!-- <li> <a href="<?php echo BASE_URL . 'admin/logs'; ?>"><i class="bx bx-right-arrow-alt"></i>Log de Acceso</a> -->
-                        <li> <a href="#"><i class="bx bx-right-arrow-alt"></i>Log de Acceso</a>                            
-                    </li>
+                        <li> <a href="<?php echo BASE_URL . 'admin/logs'; ?>"><i class="bx bx-right-arrow-alt"></i>Log de Acceso</a></li>
                     </ul>
                 </li>
                 <?php } ?> 

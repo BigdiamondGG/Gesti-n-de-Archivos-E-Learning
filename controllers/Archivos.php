@@ -185,6 +185,33 @@ class Archivos extends Controller
         }
         die();
     }
+     // eliminar archivo de carpetas publicas
+     public function deletepublic($id_archivop)
+     {
+         if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+             try {
+                 $id_archivop = strClean($id_archivop);
+                 $consultap = $this->model->getArchivo($id_archivop);
+                 $data = $this->model->delete($id_archivop);
+                 if ($data == 1) {
+                     $fecha_actual = date('Y-m-d H:i:s');
+                     $fecha_delete = date("Y-m-d H:i:s", strtotime($fecha_actual . '+1 month'));
+                     $temp = $this->model->addTemporal($consultap['nombre'], $fecha_actual, $fecha_delete, $consultap['id_carpeta'],$consultap['tipo'], 0);
+                     if ($temp > 0) {
+                         $res = array('msg' => 'ARCHIVO ELIMINADO', 'type' => 'success');
+                     } else {
+                         $res = array('msg' => 'ERROR CREAR EL ARCHIVO TEMP', 'type' => 'error');
+                     }
+                 } else {
+                     $res = array('msg' => 'ERROR AL ELIMINAR', 'type' => 'error');
+                 }
+             } catch (PDOException $th) {
+                 $res = array('msg' => 'ERROR DESCONOCIODO', 'type' => 'error');
+             }
+             echo json_encode($res);
+         }
+         die();
+     }
   // Test REstaurar archivo
   public function restore($id_archivo)
   {
@@ -211,11 +238,27 @@ class Archivos extends Controller
       }
       die();
   }
+    //buscar archivos
     public function buscar()
     {
         $array = array();
         $valor = strClean($_GET['term']);
         $data = $this->model->buscarPorNombre($valor, $this->id_usuario);
+        foreach ($data as $row) {
+            $result['id'] = $row['id'];
+            $result['nombre'] = $row['carpeta'] . '/' . $row['nombre'];
+            $result['label'] = $row['nombre'] . ' - ' . $row['tipo'] . ' - ' . $row['fecha_create'];
+            array_push($array, $result);
+        }
+        echo json_encode($array, JSON_UNESCAPED_UNICODE);
+        die();
+    }
+    //buscar los archivos publicos
+    public function buscarPublic()
+    {
+        $array = array();
+        $valor = strClean($_GET['term']);
+        $data = $this->model->buscarPorNombre($valor, 0);
         foreach ($data as $row) {
             $result['id'] = $row['id'];
             $result['nombre'] = $row['carpeta'] . '/' . $row['nombre'];

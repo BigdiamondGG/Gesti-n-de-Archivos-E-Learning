@@ -8,6 +8,11 @@ class UsuariosModel extends Query{
         $sql = "SELECT id, CONCAT(nombre, ' ', apellido) AS nombres, correo, telefono, direccion, rol FROM usuarios WHERE estado = $estado";
         return $this->selectAll($sql);
     }
+    public function getStudent()
+    {
+        $sql = "SELECT m.*, e.empresa AS nombre_empresa FROM matricula_empresas AS m JOIN empresas AS e ON m.id_empresa = e.id_empresa";
+        return $this->selectAll($sql);
+    }
     public function registrar($nombres, $apellidos, $correo,
     $telefono, $direccion, $clave, $rol)
     {

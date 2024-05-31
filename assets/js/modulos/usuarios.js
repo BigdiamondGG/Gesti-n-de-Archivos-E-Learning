@@ -1,4 +1,5 @@
 let tblUsuarios;
+let tblStudent;
 const formulario = document.querySelector('#formulario');
 const nombres = document.querySelector('#nombres');
 const apellidos = document.querySelector('#apellidos');
@@ -8,6 +9,7 @@ const direccion = document.querySelector('#direccion');
 const clave = document.querySelector('#clave');
 const rol = document.querySelector('#rol');
 const id = document.querySelector('#id');
+
 
 //elementos para mostor errore
 const errorNombre = document.querySelector('#errorNombre');
@@ -35,6 +37,29 @@ document.addEventListener('DOMContentLoaded', function () {
             { data: 'direccion' },
             { data: 'rol' },
             { data: 'acciones' }
+        ],
+        language: {
+            url: base_url + 'assets/js/espanol.json'
+        },
+        dom,
+        buttons,
+        responsive: true,
+        order: [[0, 'asc']],
+    });
+    //cargar datos de Estudiantes con el plugin datatables
+    tblStudent = $('#tblStudent').DataTable({
+        ajax: {
+            url: base_url + 'usuarios/listarStudents',
+            dataSrc: ''
+        },
+        columns: [
+            { data: 'nombre_empresa' },
+            { data: 'nombres' },
+            { data: 'apellidos' },
+            { data: 'correo' },
+            { data: 'telefono_celular' },
+            { data: 'departamento' },
+            { data: 'curso' }
         ],
         language: {
             url: base_url + 'assets/js/espanol.json'

@@ -151,6 +151,41 @@ function deleteArchivo(idarchivo) {
         }
     })
 }
+//eliminar archivos de carpetas publicas
+function deleteArchivoPublic(idarchivo) {
+    Swal.fire({
+        title: 'Esta seguro de eliminar?',
+        text: "El archivo se eliminará de forma permanente en 30 días!",
+        icon: 'warning',
+        toast: true,
+        showCancelButton: true,
+        confirmButtonColor: '#0DCAF0',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, Eliminar!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            const url = base_url + 'archivos/deletepublic/' + idarchivo;
+            //hacer una instancia del objeto XMLHttpRequest 
+            const http = new XMLHttpRequest();
+            //Abrir una Conexion - POST - GET
+            http.open('GET', url, true);
+            //Enviar Datos
+            http.send();
+            //verificar estados
+            http.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    const res = JSON.parse(this.responseText);
+                    alertaPersonalizada(res.type, res.msg);
+                    if (res.type == 'success') {
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 1500);
+                    }
+                }
+            }
+        }
+    })
+}
 //Funcion Prueba Restaurar archivos
 function restoreArchivo(id) {
     Swal.fire({

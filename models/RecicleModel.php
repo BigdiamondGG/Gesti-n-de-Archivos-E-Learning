@@ -8,6 +8,11 @@ class RecicleModel extends Query{
         $sql = "SELECT * FROM reciclaje WHERE id_usuario = $id_usuario";
         return $this->selectAll($sql);
     }
+    public function getReciclePublic()
+    {
+        $sql = "SELECT * FROM reciclaje WHERE id_usuario = 0";
+        return $this->selectAll($sql);
+    }
        // eliminar archivo Reciclaje 
        public function deleteRecicle($id_usuario)
        {
